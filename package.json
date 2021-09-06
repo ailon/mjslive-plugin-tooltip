@@ -1,0 +1,45 @@
+{
+  "name": "mjslive-plugin-todo",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "mjslive-plugin-todo.js",
+  "module": "mjslive-plugin-todo.esm.js",
+  "author": "TODO",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "lint": "eslint src",
+    "start": "rollup --config rollup.config.dev.js -w",
+    "build": "yarn lint && rollup --config rollup.config.prod.js",
+    "docs": "typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TODO"
+  },
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "markerjs-live": "^1.0.0-alpha.4",
+    "markerjs2": "^2.11.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.2.1",
+    "rollup": "^2.42.0",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dev": "^1.1.3",
+    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-generate-html-template": "^1.7.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.1.0",
+    "typedoc": "^0.21.5",
+    "typescript": "^4.1.3"
+  }
+}
