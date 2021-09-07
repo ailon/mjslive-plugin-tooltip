@@ -1,1 +1,1 @@
-export { Todo } from './Todo';
+export { Tooltip } from './Tooltip';

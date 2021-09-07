@@ -1,12 +1,11 @@
-# mjslive-plugin-todo Changelog
+# mjslive-plugin-tooltip Changelog
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- TODO - edit this section -->
-## [1.0.0] - 2022-02-30
+## [1.0.0] - 2021-09-07
 ### Added
 - Initial public release.
 
-[1.0.0]: https://github.com/TODO/releases/tag/v1.0.0
+[1.0.0]: https://github.com/ailon/mjslive-plugin-tooltip/releases/tag/v1.0.0

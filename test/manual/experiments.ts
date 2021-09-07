@@ -1,6 +1,7 @@
-import { Todo } from '../../src';
+import { Tooltip } from '../../src';
 import { MarkerView, MarkerAreaState, MarkerBaseState } from 'markerjs-live';
 import { MarkerArea } from 'markerjs2';
+// import 'tippy.js/themes/light-border.css';
 
 export class Experiments {
   private markerView1: MarkerView;
@@ -92,7 +93,7 @@ export class Experiments {
   public openMarkerView(target: HTMLImageElement): void {
     this.markerView1 = new MarkerView(target);
 
-    this.markerView1.addPlugin(new Todo());
+    this.markerView1.addPlugin(new Tooltip());
 
     this.markerView1.show(this.currentState);
   }

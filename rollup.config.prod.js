@@ -5,9 +5,10 @@ import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import copy from 'rollup-plugin-copy';
+import replace from 'rollup-plugin-replace';
 
 const outputDir = './dist/';
-const globalName = 'mjslPluginTodo'; // @todo rename in-line with your plugin name
+const globalName = 'mjslPluginTooltip';
 
 const banner = `/* **********************************
 ${pkg.name} version ${pkg.version}
@@ -20,11 +21,14 @@ see README and LICENSE for details
 
 export default [{
   input: ['./src/index.ts'],
-  external: ['markerjs-live'],
+  external: ['markerjs-live', 'tippy.js', 'tippy.js/dist/tippy.css'],
   output: {
     dir: './dts/'
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     del({ targets: ['dts/*', 'dist/*']}),
     typescript({ 
       declaration: true, 
@@ -39,7 +43,7 @@ export default [{
   plugins: [dts()],
 }, {
   input: ['src/index.ts'],
-  external: ['markerjs-live'],
+  external: ['markerjs-live', 'tippy.js', 'tippy.js/dist/tippy.css'],
   output: [
     {
       file: outputDir + pkg.module,
@@ -53,16 +57,20 @@ export default [{
       format: 'umd',
       globals: {
         "markerjs-live": 'mjslive',
+        "tippy.js": 'tippy'
       },
       sourcemap: true,
       banner: banner
     }
   ],
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     generatePackageJson({
       baseContents: (pkg) => {
         pkg.scripts = {};
-        pkg.dependencies = {};
+        //pkg.dependencies = {};
         pkg.devDependencies = {};
         return pkg;
       }

@@ -1,52 +1,35 @@
 
-# Plugin development starter project
+# Tooltip plugin for marker.js Live
 
-This repository is a starter project for developing plugins for [marker.js Live](https://markerjs.com/products/markerjs-live). It is not necessary to use it as your starting point but it provides everything you need to quickly develop a plugin with no additional setup required.
-
-## How to use this starter kit to develop your own plugin
-1. Fork/download the code for this project (remember to remove the git repo association)
-2. Run `yarn` to install dependencies.
-3. Rename `/src/Todo.ts` and the class inside to reflect the plugin you are developing. If using VS Code I suggest you use the "Rename symbol" functionality (F2) to rename all the references.
-4. Find all occurances of the word "todo" and replace accordingly.
-5. Use the code under `/test/manual` to manuall test while developing. Run `yarn start` to start a dev server/debugging session.
-6. run `yarn build` to build redistributable files (under `/dist`).
-7. run `yarn docs` to generate reference documentation (if needed).
-
-
-
-
-Below is a sample readme for your plugin. TODO remove the above part (and this line) before publishing.
-
----
-
-
-# TODO plugin for marker.js Live
-
-This plugin TODO.
+This plugin adds tooltip functionality to your instance of marker.js Live. 
+It displays `notes` field of markers as a tooltip 
+using [Tippy.js](https://atomiks.github.io/tippyjs/)
 
 ## Installation
 
 Make sure you have [marker.js Live] installed. Then run
 
 ```
-npm install mjslive-plugin-todo
+npm install tippy.js mjslive-plugin-tooltip
 ```
 
 or 
 
 ```
-yarn add mjslive-plugin-todo
+yarn add tippy.js mjslive-plugin-tooltip
 ```
 
 ## Usage
 
-To add the functionality to marker.js Live instance simply pass a new instance of `Todo` to its `addPlugins()` method.
+To add the functionality to marker.js Live instance simply create a new instance of `Tooltip`, configure it and add it via the `addPlugins()` method.
 
 ```
-import { Todo } from 'mjslive-plugin-todo';
+import { Tooltip } from 'mjslive-plugin-tooltip';
 
 ...
-markerView.addPlugin(new Todo());
+const tooltip = new Tooltip();
+tooltip.followCursor = true;
+markerView.addPlugin(tooltip);
 
 markerView1.show(markerViewState);
 
@@ -54,7 +37,20 @@ markerView1.show(markerViewState);
 
 ## Configuration
 
-Todo plugin object has the following properties:
+Tooltip plugin object has the following properties:
+
+- `showArrow` - when set to `true` displays tooltip's tip (arrow). Defaults to `false`.
+- `allowHTML` - if set to `true` assumes that the content of `notes` is HTML and 
+renders it as is. Warning: make sure you trust the source of your markers 
+before turning this on. Default - `false`.
+- `followCursor` - when set to `true` the tooltip will follow mouse cursor. Defaults to `false`.
+- `theme` - can be use to specify custom Tippy theme. 
+See [Tippy.js documentation](https://atomiks.github.io/tippyjs/v6/themes/) for details.
+
+## Credits
+
+This plugin's functionality relies on [Tippy.js](https://atomiks.github.io/tippyjs/)
+by atomiks.
 
 ## License
 
