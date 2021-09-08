@@ -25,6 +25,10 @@ export class Tooltip implements IMarkerViewPlugin {
    * @see https://atomiks.github.io/tippyjs/v6/themes/
    */
   public theme = '';
+  /**
+   * Function to be called to parse each note.
+   */
+  public notesParser: (notes: string) => string;
 
   public init(markerView: MarkerView): void {
     markerView.addEventListener('load', this.markerViewLoaded);
@@ -33,8 +37,9 @@ export class Tooltip implements IMarkerViewPlugin {
   private markerViewLoaded: MarkerViewEventHandler = (markerView) => {
     markerView.markers.forEach(marker => {
       if (marker.notes) {
+        const notes = this.notesParser ? this.notesParser(marker.notes) : marker.notes;
         tippy(marker.container, { 
-            content: marker.notes,
+            content: notes,
             arrow: this.showArrow,
             allowHTML: this.allowHTML,
             followCursor: this.followCursor,

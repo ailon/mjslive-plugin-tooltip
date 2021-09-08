@@ -10,13 +10,13 @@ using [Tippy.js](https://atomiks.github.io/tippyjs/)
 Make sure you have [marker.js Live] installed. Then run
 
 ```
-npm install tippy.js mjslive-plugin-tooltip
+npm install mjslive-plugin-tooltip
 ```
 
 or 
 
 ```
-yarn add tippy.js mjslive-plugin-tooltip
+yarn add mjslive-plugin-tooltip
 ```
 
 ## Usage
@@ -44,8 +44,9 @@ Tooltip plugin object has the following properties:
 renders it as is. Warning: make sure you trust the source of your markers 
 before turning this on. Default - `false`.
 - `followCursor` - when set to `true` the tooltip will follow mouse cursor. Defaults to `false`.
-- `theme` - can be use to specify custom Tippy theme. 
+- `theme` - can be use to specify custom Tippy theme.
 See [Tippy.js documentation](https://atomiks.github.io/tippyjs/v6/themes/) for details.
+- `notesParser` - function to parse notes if needed (eg. Markdown parser). When set is called before assigning the tooltip content. Takes string as an argument and should return a string.
 
 ## Credits
 
